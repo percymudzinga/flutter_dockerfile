@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  demo_web:
+    build: .
+    ports:
+      - "80:80"
