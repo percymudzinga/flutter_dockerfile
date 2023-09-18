@@ -11,10 +11,11 @@ USER flutter
 WORKDIR /home/flutter/app
 RUN mkdir /home/flutter/Downloads
 RUN mkdir /home/flutter/development
-RUN wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.4-stable.tar.xz -P /home/flutter/Downloads
+RUN wget http://172.21.144.1:8080/flutter_linux_3.13.4-stable.tar.xz -P /home/flutter/Downloads
 RUN cd /home/flutter/development && tar xf /home/flutter/Downloads/flutter_linux_3.13.4-stable.tar.xz
 RUN sudo git config --system --add safe.directory '*'
 
+FROM build AS build1
 COPY --chown=flutter . .
 RUN /home/flutter/development/flutter/bin/flutter build web
 
